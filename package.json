@@ -1,7 +1,7 @@
 {
   "name": "crudjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "A beginner project on CRUD APIs",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
@@ -9,7 +9,10 @@
   "author": "umema_ahmed",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^4.13.0",
     "mongoose": "^6.9.0"
   },

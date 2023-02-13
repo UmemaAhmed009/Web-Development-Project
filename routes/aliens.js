@@ -11,7 +11,7 @@ router.get('/',async(req,res) =>{
         res.send('Error ' + err)
     }
 })
-
+//GET API
 router.get('/:id',async(req,res) =>{
     try{
         const alien =  await Alien.findById(req.params.id)
@@ -21,30 +21,19 @@ router.get('/:id',async(req,res) =>{
         res.send('Error ' + err)
     }
 })
-
-router.patch('/:id',async(req,res) =>{
+//PUT API
+router.put('/:id',async(req,res) =>{
     try{
         const alien = await Alien.findById(req.params.id)
-        alien.sub = req.body.sub
+        alien.name = req.body.name
         const a1 = await alien.save()
         res.json(a1)
     }
     catch(err){
-        res.send('Error')
+        res.send('Error on put')
     }
 })
-router.delete('/:id',async(req,res) =>{
-    try{
-        const alien = await Alien.findById(req.params.id)
-        alien.sub = req.body.sub
-        const a1 = await alien.remove()
-        res.json(a1)
-    }
-    catch(err){
-        res.send('Error')
-    }
-})
-
+//POST API
 router.post('/', async(req,res) => {
     const alien = new Alien({
         name: req.body.name,
@@ -58,6 +47,18 @@ router.post('/', async(req,res) => {
         res.send('Error on post' + err)
     }
 
+})
+//DELETE API
+router.delete('/:id',async(req,res) =>{
+    try{
+        const alien = await Alien.findById(req.params.id)
+        alien.sub = req.body.sub
+        const a1 = await alien.remove ()
+        res.json(a1)
+    }
+    catch(err){
+        res.send('Error')
+    }
 })
 
 module.exports= router

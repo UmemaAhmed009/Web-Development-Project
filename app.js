@@ -1,6 +1,10 @@
  const express = require('express')
  const mongoose = require('mongoose')
- const url = 'mongodb://127.0.0.1/AlienDBex'
+ require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it is working
+
+ //const url = 'mongodb://127.0.0.1/AlienDBex'
+ const url = 'mongodb://127.0.0.1/User'
 
  const app = express()
 
@@ -13,8 +17,11 @@
 
  app.use(express.json())
 
- const alienRouter=require('./routes/aliens')
- app.use('/aliens',alienRouter)
+ /*const alienRouter=require('./routes/aliens')
+ app.use('/aliens',alienRouter)*/
+
+ const userRouter=require('./routes/users')
+ app.use('/users',userRouter)
 
  app.listen(9000, () =>{
     console.log('Server started')
