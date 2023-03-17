@@ -2,7 +2,7 @@ const express = require('express')
 const {signAccessToken, signRefreshToken, verifyRefreshToken, verifyAccessToken} = require("../helpers/jwt_helpers")
 const router = express.Router()
 
-// importing subject schema
+// importing class schema
 const Class = require("../models/class");
 
 //GET API

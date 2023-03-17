@@ -1,28 +1,27 @@
 const mongoose = require('mongoose');
-const Subject = require("../models/subject");
-const Class = require("../models/class");
+const Lesson = require("../models/lesson");
 
-const unit_schema = new mongoose.Schema({
+const question_schema = new mongoose.Schema({
     _id:
     {
         type: Number,
         required: true
     },
-    unit_name:
+    lesson_id:
+    {
+        type: mongoose.Schema.Types.Number,
+        required: true,
+        ref: 'Lesson'
+    },
+    question_details:
     {
         type: String,
         required: true
     },
-    class_id:
-    {
-        type: mongoose.Schema.Types.Number,
-        required: true,
-        ref: 'Class'
-    },
-    subject_id:{
-        type: mongoose.Schema.Types.Number,
+    answers:{
+        type: Array,
         required: true,
         ref: 'Subject'
     }
 })
-module.exports = mongoose.model("Unit", unit_schema);
+module.exports = mongoose.model("Question", question_schema);

@@ -18,10 +18,9 @@ const lesson_schema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    subject_id:{
-        type: mongoose.Schema.Types.Number,
-        required: true,
-        ref: 'Subject'
+    lesson_details:{
+        type: String,
+        //required: true,
     }
 })
-module.exports = mongoose.model("Unit", unit_schema);
+module.exports = mongoose.model("Lesson", lesson_schema);

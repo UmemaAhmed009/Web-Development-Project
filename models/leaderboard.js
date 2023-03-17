@@ -1,28 +1,40 @@
 const mongoose = require('mongoose');
-const Subject = require("../models/subject");
-const Class = require("../models/class");
+//const Student = require("../models/student");
+//const Progress = require("../models/progress");
 
-const unit_schema = new mongoose.Schema({
+const leaderboard_schema = new mongoose.Schema({
     _id:
     {
         type: Number,
         required: true
     },
-    unit_name:
+    student_id:
+    {
+        type: mongoose.Schema.Types.Number,
+        required: true,
+        ref: 'Student'
+    },
+    progress_id:
+    {
+        type: mongoose.Schema.Types.Number,
+        required: true,
+        ref: 'Progress'
+    },
+    unit_progress:
     {
         type: String,
-        required: true
+        required: true,
+        ref: 'Progress'
     },
-    class_id:
+    time_taken:
     {
         type: mongoose.Schema.Types.Number,
         required: true,
-        ref: 'Class'
     },
-    subject_id:{
-        type: mongoose.Schema.Types.Number,
-        required: true,
-        ref: 'Subject'
+    rank:
+    {
+        type: Number,
+        required: true
     }
 })
-module.exports = mongoose.model("Unit", unit_schema);
+module.exports = mongoose.model("Leaderboard", leaderboard_schema);
