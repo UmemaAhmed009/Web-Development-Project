@@ -2,13 +2,14 @@ const express = require('express')
 const bcrypt = require('bcryptjs')
 //const jwt = require("jsonwebtoken");
 const createError = require("http-errors")
-const { verifyAccessToken} = require("../helpers/jwt_helpers");
-const {signAccessToken, signRefreshToken, verifyRefreshToken} = require("../helpers/jwt_helpers")
+//const { verifyAccessToken} = require("../helpers/jwt_helpers");
+const {signAccessToken, signRefreshToken, verifyRefreshToken, verifyAccessToken} = require("../helpers/jwt_helpers")
 const router = express.Router()
-// importing user context
+// importing user schema
 const User = require("../models/user");
 const { create } = require('../models/alien');
-//Register
+
+//REGISTER API
 router.post("/register",async(req,res)=>{
     try{
         const { first_name, last_name, email, password } = req.body;
@@ -44,15 +45,15 @@ router.post("/register",async(req,res)=>{
             //save user token
             const accessToken = await signAccessToken(savedUser.id);
             const refreshToken = await signRefreshToken(savedUser.id);
-            res.send({accessToken, refreshToken})
+            res.send(savedUser)
             // return new user
             //res.status(201).json(savedUser);
         }catch(err){
-                console.log("Error found 1"+ err);
+                console.log("Error found while registering user"+ err);
             }
 });
 
-//Login
+//LOGIN API
 router.post("/login", async(req,res)=>{
     try{
         //Get user input
@@ -75,9 +76,10 @@ router.post("/login", async(req,res)=>{
         }
     }
     catch(err){
-        console.log("Error found 2" + err);
+        console.log("Error while logging" + err);
     }
 })
+//REFRESH-TOKEN API 
 router.post('/refresh-token', async(req,res)=>{
     try {
         const { refreshToken } = req.body
@@ -88,7 +90,7 @@ router.post('/refresh-token', async(req,res)=>{
         const refToken = await signRefreshToken(userID)
         res.send({accessToken: accessToken, refreshToken: refToken})
     } catch (error) {
-        
+        console.log("Error while generating refresh token" + err);
     }
 })
 router.get('/', verifyAccessToken, async(req,res) =>{
@@ -103,14 +105,14 @@ router.get('/', verifyAccessToken, async(req,res) =>{
     }
 })
 
-//GET API
+//GET BY ID API
 router.get('/:id',verifyAccessToken,async(req,res) =>{
     try{
         const users =  await User.findById(req.params.id)
         res.json(users)
     }
     catch(err){
-        res.send("Error found 3" + err)
+        res.send("Error found getting user by ID " + err)
     }
 })
 //PUT API
@@ -150,7 +152,7 @@ router.delete('/:id',verifyAccessToken,async(req,res) =>{
         res.json(a1)
     }
     catch(err){
-        res.send('Error')
+        res.send('Error on deleting')
     }
 }) 
 module.exports = router

@@ -1,18 +1,19 @@
+ //Import express
  const express = require('express')
+ //Import mongoose
  const mongoose = require('mongoose')
  require('dotenv').config()
-console.log(process.env) // remove this after you've confirmed it is working
 
- //const url = 'mongodb://127.0.0.1/AlienDBex'
+//const url = 'mongodb://127.0.0.1/AlienDBex'
  const url = 'mongodb://127.0.0.1/User'
-
+//Initializa the app
  const app = express()
 
  mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
  const con = mongoose.connection
 
  con.on('open', () =>{
-    console.log('connected...')
+    console.log('Mongodb is connected...')
  })
 
  app.use(express.json())
@@ -22,7 +23,16 @@ console.log(process.env) // remove this after you've confirmed it is working
 
  const userRouter=require('./routes/users')
  app.use('/users',userRouter)
+ //Using Subject Routes
+ const subjectRouter=require('./routes/subject-routes')
+ app.use('/subject',subjectRouter)
+ //Using Class Routes
+ const classRouter=require('./routes/class-routes')
+ app.use('/class',classRouter)
+ //Using Unit Routes
+ const unitRouter=require('./routes/unit-routes')
+ app.use('/unit',unitRouter)
 
- app.listen(9000, () =>{
-    console.log('Server started')
+ app.listen(3000, () =>{
+    console.log('Server started...')
  })
