@@ -43,6 +43,10 @@
  const leaderboardRouter=require('./routes/leaderboard-routes')
  app.use('/leaderboard',leaderboardRouter)
 
+ //Using Student Routes
+ const studentRouter=require('./routes/student-routes')
+ app.use('/student',studentRouter)
+
  app.listen(3000, () =>{
     console.log('Server started...')
  })
