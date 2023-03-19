@@ -1,0 +1,1428 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# WebDev
+
+MOCK APIs for an edtech project
+
+Group Members: Maryam Tauqeer, Minal Sarwar, Umema Ahmed
+
+## Subjects Collection [/subject]
+
+### List All Subjects[GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+               "subjectID":"001", 
+               "subjectName":"Maths" 
+            },
+            {
+               "subjectID":"002", 
+               "subjectName":"Urdu"
+            },
+            {
+               "subjectID":"003", 
+               "subjectName":"English" 
+            }
+        ]
+        
+### Get Subject by ID [GET /subject/{subjectID}]
+
++ Parameters
+    + subjectID: `001` (string, required) - The ID of the subject record to get.
+
++ Response 200 (application/json)
+
+        {
+           "subjectID":"001", 
+           "subjectName":"Maths" 
+        }
+
+### Create a New Subject [POST]
+
++ Request (application/json)
+
+        {
+            "subjectName": "Science"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /subjects/4
+
+    + Body
+
+            {
+                "subjectID":"004",
+                "subjectName": "Science"
+            }
+
+### Update Subject Details [PUT /subject/{subjectID}]
+
++ Parameters
+    + subjectID: `004` (string, required) - The ID of the subject record to update.
+
++ Request (application/json)
+
+        {
+           "subjectName": "Science"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /subjects/4
+
+    + Body
+
+            {
+                "subjectID":"004",
+                "subjectName": "Science"
+            }
+
+
+### Delete a Subject [DELETE /subject/{subjectID}]
+
++ Parameters
+    + subjectID: `001` (string, required) - The ID of the subject record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /subject/1
+
+    + Body
+
+            {
+                "message": "Subject has been deleted"
+            }
+        
+        
+        
+## Class Collection [/class]
+
+### List All Classes [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "classID": "001",
+                "className": "KG"
+            },
+            {
+                 "classID": "002",
+                "className": "CLASS 1"
+            },
+            {
+                "classID": "003",
+                "className": "CLASS 2"
+            },
+            {
+                "classID": "004",
+                "className": "CLASS 3"
+            }
+            
+        ]
+
+### Get Class by ID[GET /class/{classID}]
+
++ Parameters
+    + classID: `001` (string, required) - The ID of the class record to get.
+
++ Response 200 (application/json)
+
+        {
+            "classID": "001",
+            "className": "KG"
+        }
+
+### Create a New Class [POST]
+
++ Request (application/json)
+
+        {
+            "className": "CLASS 4"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /class/4
+
+    + Body
+
+            {
+                "classID":"004",
+                "className": "CLASS 4"
+            }
+
+### Update Class Details [PUT /class/{classID}]
+
++ Parameters
+    + classID: `004` (string, required) - The ID of the class record to update.
+
++ Request (application/json)
+
+        {
+           "className": "CLASS 4"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /class/4
+
+    + Body
+
+            {
+                "classID":"004",
+                "className": "CLASS 4"
+            }
+
+
+### Delete a Class [DELETE /class/{classID}]
+
++ Parameters
+    + classID: `001` (string, required) - The ID of the class record to update.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /class/1
+
+    + Body
+
+            {
+                "message": "Class has been deleted"
+            }
+
+## Units Collection [/unit]
+
+### List All Units [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "unitID": "001",
+                "unitName": "Basic Shapes",
+                "classID": "001",
+                "subjectID":"001"
+            },
+            {
+                 
+                "unitID": "002",
+                "unitName": "Basic Colours",
+                "classID": "001",
+                "subjectID":"001"
+            }
+            
+        ]
+
+### Get Unit by ID[GET /unit/{unitID}]
+
++ Parameters
+    + unitID: `001` (string, required) - The ID of the unit record to get.
+
++ Response 200 (application/json)
+
+        {
+            "unitID": "001",
+            "unitName": "Basic Shapes",
+            "classID": "001",
+            "subjectID":"001"
+        }
+
+### Create a New Unit[POST]
+
++ Request (application/json)
+
+        {
+            "unitName":"Basic Shapes",
+            "classID":"001",
+            "subjectID": "001"
+        }
+        
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /unit/1
+
+    + Body
+
+            {
+                "unitID":"001",
+                "unitName": "Basic Shapes",
+                "classID":"001",
+                "subjectID": "001"
+            }
+
+### Update Unit Details [PUT /unit/{unitID}]
+
++ Parameters
+    + unitID: `001` (string, required) - The ID of the unit record to update.
+
++ Request (application/json)
+
+        {
+           "unitName": "Basic Shapes"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /unit/1
+
+    + Body
+
+            {
+                "unitID":"001",
+                "unitName": "Basic Shapes",
+                "classID":"001",
+                "subjectID": "001"
+            }
+
+### Delete a Unit [DELETE /unit/{unitID}]
+
++ Parameters
+    + unitID: `001` (string, required) - The ID of the unit record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /unit/1
+
+    + Body
+
+            {
+                "message": "Unit has been deleted"
+            }
+
+## Lessons Collection [/lesson]
+### List All Lessons [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "lessonID": "001",
+                "unitID": "001",
+                "lessonName": "Circle",
+                "lessonDetails":"A circle is like a magic hula hoop that never stops spinning!"
+            },
+            {
+                 
+                "lessonID": "002",
+                "unitID": "002",
+                "lessonName": "Red",
+                "lessonDetails":"Red is a color that looks like a juicy apple or a pretty ladybug!"
+            }
+            
+        ]
+        
+### Get Lesson by ID[GET /lesson/{lessonID}]
+
++ Parameters
+    + lessonID: `001` (string, required) - The ID of the lesson record to get.
+
++ Response 200 (application/json)
+
+        {
+            "lessonID": "001",
+            "unitID": "001",
+            "lessonName": "Circle",
+            "lessonDetails":"A circle is like a magic hula hoop that never stops spinning!"
+        }
+
+### Create a New Lesson[POST]
+
++ Request (application/json)
+
+        {
+            "unitID": "001",
+            "lessonName": "Circle",
+            "lessonDetails":"A circle is like a magic hula hoop that never stops spinning!"
+        }
+        
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /lesson/1
+
+    + Body
+
+            {
+                "lessonID": "001",
+                "unitID": "001",
+                "lessonName": "Circle",
+                "lessonDetails":"A circle is like a magic hula hoop that never stops spinning!"
+            }
+
+### Update Lesson Details [PUT /lesson/{lessonID}]
+
++ Parameters
+    + lessonID: `001` (string, required) - The ID of the lesson record to update.
+
++ Request (application/json)
+
+        {
+           "lessonName": "Circle"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /lesson/1
+
+    + Body
+
+            {
+                "lessonID": "001",
+                "unitID": "001",
+                "lessonName": "Circle",
+                "lessonDetails":"A circle is like a magic hula hoop that never stops spinning!"
+            }
+
+
+### Delete a Lesson [DELETE /lesson/{lessonID}]
+
++ Parameters
+    + lessonID: `001` (string, required) - The ID of the lesson record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /lesson/1
+
+    + Body
+
+            {
+                "message": "Lesson has been deleted"
+            }
+  
+## Questions Collection [/question]
+### List All Questions [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "questionID": "001",
+                "lessonID": "001",
+                "questionDetails": "What is this shape called?",
+                "answers":[
+                    "Circle",
+                    "Square",
+                    "Triangle"
+                ]
+            },
+            {
+                "questionID": "002",
+                "lessonID": "002",
+                "questionDetails": "What is this colour called?",
+                "answers":[
+                    "Red",
+                    "Pink",
+                    "Green"
+                ]
+            }
+            
+        ]
+
+### Get Question by ID[GET /question/{questionID}]
+
++ Parameters
+    + questionID: `001` (string, required) - The ID of the question record to get.
+
++ Response 200 (application/json)
+
+        {
+            "questionID": "001",
+            "lessonID": "001",
+            "questionDetails": "What is this shape called?",
+            "answers":[
+                "Circle",
+                "Square",
+                "Triangle"
+            ]
+        }
+
+### Create a New Question[POST]
+
++ Request (application/json)
+
+        {
+            "lessonID": "001",
+            "questionDetails": "What is this shape called?",
+            "answers":[
+                "Circle",
+                "Square",
+                "Triangle"
+            ]
+        }
+        
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /question/1
+
+    + Body
+
+            {
+                "questionID": "001",
+                "lessonID": "001",
+                "questionDetails": "What is this shape called?",
+                "answers":[
+                    "Circle",
+                    "Square",
+                    "Triangle"
+                ]
+            }
+
+### Update Question Details [PUT /question/{questionID}]
+
++ Parameters
+    + questionID: `001` (string, required) - The ID of the question record to update.
+
++ Request (application/json)
+
+        {
+           "questionDetails": "What is this shape called?"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /question/1
+
+    + Body
+
+            {
+                "questionID": "001",
+                "lessonID": "001",
+                "questionDetails": "What is this shape called?",
+                "answers":[
+                    "Circle",
+                    "Square",
+                    "Triangle"
+                ]
+            }
+
+### Delete a Question [DELETE /question/{questionID}]
+
++ Parameters
+    + questionID: `001` (string, required) - The ID of the question record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /question/1
+
+    + Body
+
+            {
+                "message": "Question has been deleted"
+            }
+
+## Progress Collection [/progress]
+
+### List All Progress [GET]
+
++ Response 200 (application/json)
+
+            
+        {
+           "progressID":"001", 
+           "studentID":"004",
+           "subjects":[{
+                "subjectID":"001",
+                "classes":[{
+                    "classID":"001",
+                    "units":[{
+                        "unitID":"001",
+                        "unitProgress":"100%",
+                        "completedLessons":"1",
+                        "totalLessons":"1",
+                        "unitStartAt":"2015-08-05T08:40:51.620Z",
+                        "isCompleted":"true",
+                        "unitCompletedAt":"2015-08-05T08:40:51.620Z",
+                        "lessons":[{
+                            "lessonID":"001",
+                            "lessonProgress":"100%",
+                            "correctAnswers":"5",
+                            "totalQuestions":"5",
+                            "isCompleted":"true",
+                            "lessonCompletedAt":"2015-08-05T08:40:51.620Z",
+                            "answerStatus":[
+                                {
+                                    "questionID":"001",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"002",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"003",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"004",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"005",
+                                    "isCorrect":"true"
+                                    
+                                }
+                            ]
+                        }]
+                    }]
+                }]
+           
+           }]
+           
+        }
+        
+### Get Progress by ID [GET /progress/{progressID}]
+
++ Parameters
+    + progressID: `001` (string, required) - The ID of the progress record to get.
+
++ Response 200 (application/json)
+
+        {
+           "progressID":"001", 
+           "studentID":"004",
+           "subjects":[{
+                "subjectID":"001",
+                "classes":[{
+                    "classID":"001",
+                    "units":[{
+                        "unitID":"001",
+                        "unitProgress":"100%",
+                        "completedLessons":"1",
+                        "totalLessons":"1",
+                        "unitStartAt":"2015-08-05T08:40:51.620Z",
+                        "isCompleted":"true",
+                        "unitCompletedAt":"2015-08-05T08:40:51.620Z",
+                        "lessons":[{
+                            "lessonID":"001",
+                            "lessonProgress":"100%",
+                            "correctAnswers":"5",
+                            "totalQuestions":"5",
+                            "isCompleted":"true",
+                            "lessonCompletedAt":"2015-08-05T08:40:51.620Z",
+                            "answerStatus":[
+                                {
+                                    "questionID":"001",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"002",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"003",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"004",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"005",
+                                    "isCorrect":"true"
+                                    
+                                }
+                            ]
+                        }]
+                    }]
+                }]
+           
+           }]
+           
+        }
+
+### Create a new entry in Progress [POST]
+
++ Request (application/json)
+
+        {
+           "studentID":"004",
+           "subjects":[{
+                "subjectID":"001",
+                "classes":[{
+                    "classID":"001",
+                    "units":[{
+                        "unitID":"001",
+                        "unitProgress":"100%",
+                        "completedLessons":"1",
+                        "totalLessons":"1",
+                        "isCompleted":"true",
+                        "lessons":[{
+                            "lessonID":"001",
+                            "lessonProgress":"100%",
+                            "correctAnswers":"5",
+                            "totalQuestions":"5",
+                            "isCompleted":"true",
+                            "answerStatus":[
+                                {
+                                    "questionID":"001",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"002",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"003",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"004",
+                                    "isCorrect":"true"
+                                    
+                                },
+                                {
+                                    "questionID":"005",
+                                    "isCorrect":"true"
+                                    
+                                }
+                            ]
+                        }]
+                    }]
+                }]
+           
+           }]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /progress/1
+
+    + Body
+
+            {
+               "progressID":"001", 
+               "studentID":"004",
+               "subjects":[{
+                    "subjectID":"001",
+                    "classes":[{
+                        "classID":"001",
+                        "units":[{
+                            "unitID":"001",
+                            "unitProgress":"100%",
+                            "completedLessons":"1",
+                            "totalLessons":"1",
+                            "unitStartAt":"2015-08-05T08:40:51.620Z",
+                            "isCompleted":"true",
+                            "unitCompletedAt":"2015-08-05T08:40:51.620Z",
+                            "lessons":[{
+                                "lessonID":"001",
+                                "lessonProgress":"100%",
+                                "correctAnswers":"5",
+                                "totalQuestions":"5",
+                                "isCompleted":"true",
+                                "lessonCompletedAt":"2015-08-05T08:40:51.620Z",
+                                "answerStatus":[
+                                    {
+                                        "questionID":"001",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"002",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"003",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"004",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"005",
+                                        "isCorrect":"true"
+                                        
+                                    }
+                                ]
+                            }]
+                        }]
+                    }]
+               
+               }]
+            }
+
+### Update Progress [PUT /progress/{progressID}]
+
++ Parameters
+    + progressID: `001` (string, required) - The ID of the progress record to update.
+
++ Request (application/json)
+
+        {
+           "unitProgress": "50%"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /lesson-progress/1
+
+    + Body
+
+            {
+                "progressID":"001", 
+               "studentID":"004",
+               "subjects":[{
+                    "subjectID":"001",
+                    "classes":[{
+                        "classID":"001",
+                        "units":[{
+                            "unitID":"001",
+                            "unitProgress":"50%",
+                            "completedLessons":"1",
+                            "totalLessons":"1",
+                            "unitStartAt":"2015-08-05T08:40:51.620Z",
+                            "isCompleted":"true",
+                            "unitCompletedAt":"2015-08-05T08:40:51.620Z",
+                            "lessons":[{
+                                "lessonID":"001",
+                                "lessonProgress":"100%",
+                                "correctAnswers":"5",
+                                "totalQuestions":"5",
+                                "isCompleted":"true",
+                                "lessonCompletedAt":"2015-08-05T08:40:51.620Z",
+                                "answerStatus":[
+                                    {
+                                        "questionID":"001",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"002",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"003",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"004",
+                                        "isCorrect":"true"
+                                        
+                                    },
+                                    {
+                                        "questionID":"005",
+                                        "isCorrect":"true"
+                                        
+                                    }
+                                ]
+                            }]
+                        }]
+                    }]
+               
+               }]
+            }            
+
+### Delete an entry from Progress [DELETE /progress/{progressID}]
+
++ Parameters
+    + progressID: `001` (string, required) - The ID of the progress record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /progress/1
+
+    + Body
+
+            {
+                "message": "Progress entry has been deleted"
+            }
+
+## Leaderboard Collection [/leaderboard]
+
+### Display Leaderboard [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+               "leaderboardID": "001",
+               "studentID":"001", 
+               "progressID": "001",
+               "unitProgress": "25%",
+               "timeTaken": "TBD",
+               "rank":"1"
+               
+            },
+            {
+               "leaderboardID": "002",
+               "studentID":"002", 
+               "progressID": "002",
+               "unitProgress": "50%",
+               "timeTaken": "TBD",
+               "rank":"2"
+            },
+            {
+            "leaderboardID": "003",
+               "studentID":"003", 
+               "progressID": "003",
+               "unitProgress": "75%",
+               "timeTaken": "TBD",
+               "rank":"3"
+            }   
+        ]
+        
+### Get an entry in the Leaderboard by ID[GET /leaderboard/{leaderboardID}]
+
++ Parameters
+    + leaderboardID: `001` (string, required) - The ID of the leaderboard record to get.
+
++ Response 200 (application/json)
+
+        {
+           "leaderboardID": "001",
+           "studentID":"001", 
+           "progressID": "001",
+           "unitProgress": "25%",
+           "timeTaken": "TBD",
+           "rank":"1"
+           
+        }
+
+### Create a new entry in the Leaderboard [POST]
+
++ Request (application/json)
+
+        {
+            "studentID":"001", 
+            "progressID": "001",
+            "unitProgress": "25%",
+            "timeTaken": "TBD",
+            "rank":"1"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /leaderboard/1
+
+    + Body
+
+            {
+                "leaderboardID": "001",
+                "studentID":"001", 
+                "progressID": "001",
+                "unitProgress": "25%",
+                "timeTaken": "TBD",
+                "rank":"1"
+            }
+
+
+### Update an entry in the Leaderboard [PUT /leaderboard/{leaderboardID}]
+
++ Parameters
+    + leaderboardID: `001` (string, required) - The ID of the leaderboard record to update.
+
++ Request (application/json)
+
+        {
+           "rank": "5"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /leaderboard/1
+
+    + Body
+
+            {
+                "leaderboardID": "001",
+                "studentID":"001", 
+                "progressID": "001",
+                "unitProgress": "50%",
+                "timeTaken": "TBD",
+                "rank":"5"
+            }
+
+### Delete an entry from the Leaderboard [DELETE /leaderboard/{leaderboardID}]
+
++ Parameters
+    + leaderboardID: `001` (string, required) - The ID of the leaderboard record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /leaderboard/1
+
+    + Body
+
+            {
+                "message": "Leaderboard entry has been deleted"
+            }
+
+## Students Collection [/student]
+
+### List All Students[GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+               "studentID":"001", 
+               "userID":"004",
+               "name":"Aisha Rehman",
+               "age":"10"
+            },
+            {
+               "studentID":"002", 
+               "userID":"005",
+               "name":"Hamza Ahmed",
+               "age":"11"
+            }
+        ]
+
+### Get Student by ID[GET /student/{studentID}]
+
++ Parameters
+    + studentID: `001` (string, required) - The ID of the student record to get.
+
++ Response 200 (application/json)
+
+        {
+           "studentID":"001", 
+           "userID":"004",
+           "name":"Aisha Rehman",
+           "age":"10"
+        }
+
+### Create a New Student [POST]
+
++ Request (application/json)
+
+        {
+           "userID":"004",
+           "name":"Aisha Rehman",
+           "age":"10"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /student/1
+
+    + Body
+
+            {
+                "studentID":"001", 
+                "userID":"004",
+                "name":"Aisha Rehman",
+                "age":"10"
+            }
+  
+### Update Student Details [PUT /student/{studentID}]
+
++ Parameters
+    + studentID: `001` (string, required) - The ID of the student record to update.
+
++ Request (application/json)
+
+        {
+           "age": "12"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /student/1
+
+    + Body
+
+            {
+                "studentID":"001", 
+                "userID":"004",
+                "name":"Aisha Rehman",
+                "age":"12"
+            }
+
+### Delete a Student [DELETE /student/{studentID}]
+
++ Parameters
+    + studentID: `001` (string, required) - The ID of the student record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /student/1
+
+    + Body
+
+            {
+                "message": "Student has been deleted"
+            }
+
+## Users Collection [/user]
+
+### List All Users[GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+               "userID":"001", 
+               "userName":"maryam_tauqeer",
+               "password":"abc123"
+            },
+            {
+               "userID":"002", 
+               "userName":"minal_sarwar",
+               "password":"abc123"
+            },
+            {
+               "userID":"003", 
+               "userName":"umema_ahmed",
+               "password":"abc123"
+            }
+        ]
+
+### Get User by ID[GET /user/{userID}]
+
++ Parameters
+    + userID: `001` (string, required) - The ID of the user record to get.
+
++ Response 200 (application/json)
+
+        {
+           "userID":"001", 
+           "userName":"maryam_tauqeer",
+           "password":"abc123"
+        }
+
+### Create a New User [POST]
+
++ Request (application/json)
+
+        {
+           "userName":"maryam_tauqeer",
+           "password":"abc123"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /user/1
+
+    + Body
+
+            {
+                "userID":"001", 
+                "userName":"maryam_tauqeer",
+                "password":"abc123"
+            }
+
+### Update User Details [PUT /user/{userID}]
+
++ Parameters
+    + userID: `001` (string, required) - The ID of the user record to update.
+
++ Request (application/json)
+
+        {
+           "user_name": "maryamtauqeer7"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /user/1
+
+    + Body
+
+            {
+                "userID":"001", 
+                "userName":"maryamtauqeer7",
+                "password":"abc123"
+            }
+
+### Delete a User [DELETE /user/{userID}]
+
++ Parameters
+    + userID: `001` (string, required) - The ID of the user record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /user/1
+
+    + Body
+
+            {
+                "message": "User has been deleted"
+            }
+
+## Role Collection [/role]
+
+### List All Roles[GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+               "roleID":"001", 
+               "roleName":"admin"
+            },
+            {
+               "roleID":"002", 
+               "roleName":"student"
+            }
+        ]
+
+### Get Role by ID[GET  /role/{roleID}]
+
++ Parameters
+    + roleID: `001` (string, required) - The ID of the user record to get.
+
++ Response 200 (application/json)
+
+        {
+           "roleID":"001", 
+           "roleName":"admin"
+        }
+
+### Create a New Role [POST]
+
++ Request (application/json)
+
+        {
+           "roleName":"admin"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /role/1
+
+    + Body
+
+            {
+                "roleID":"001", 
+                "roleName":"admin"
+            }
+
+### Update Role Details [PUT /role/{roleID}]
+
++ Parameters
+    + roleID: `001` (string, required) - The ID of the user record to update.
+
++ Request (application/json)
+
+        {
+           "role_name": "admin"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /role/1
+
+    + Body
+
+            {
+                "roleID":"001", 
+                "roleName":"admin"
+            }
+
+### Delete a Role [DELETE /role/{roleID}]
+
++ Parameters
+    + roleID: `001` (string, required) - The ID of the role record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /role/1
+
+    + Body
+
+            {
+                "message": "Role has been deleted"
+            }
+
+## User_Role Collection [/user-role]
+
+### List All User_Roles[GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+               "userRoleID":"001", 
+               "userID":"001",
+               "roleID":"001"
+            },
+            {
+               "userRoleID":"002", 
+               "userID":"002",
+               "roleID":"001"
+            }
+        ]
+
+### Get User_Role by ID[GET /user-role/{userRoleID}]
+
++ Parameters
+    + userRoleID: `001` (string, required) - The ID of the user record to get.
+
++ Response 200 (application/json)
+
+        {
+           "userRoleID":"001", 
+           "userID":"001",
+           "roleID":"001"
+        }
+
+### Create a New User_Role [POST]
+
++ Request (application/json)
+
+        {
+           "userID":"001",
+           "roleID":"001"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /user-role/1
+
+    + Body
+
+            {
+                "userRoleID":"001", 
+                "userID":"001",
+                "roleID":"001"
+            }
+
+### Update User_Role Details [PUT /user-role/{userRoleID}]
+
++ Parameters
+    + userRoleID: `001` (string, required) - The ID of the user record to update.
+
++ Request (application/json)
+
+        {
+           "roleID": "001"
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /user-role/1
+
+    + Body
+
+            {
+                "userRoleID":"001", 
+                "userID":"001",
+                "roleID":"001"
+            }
+
+### Delete a User_Role [DELETE /user-role/{userRoleID}]
+
++ Parameters
+    + userRoleID: `001` (string, required) - The ID of the user_role record to delete.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Location: /user-role/1
+
+    + Body
+
+            {
+                "message": "User_Role has been deleted"
+            }
