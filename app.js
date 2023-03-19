@@ -55,6 +55,10 @@
  const roleRouter=require('./routes/role')
  app.use('/role',roleRouter)
 
+ //Using Student Routes
+ const studentRouter=require('./routes/student-routes')
+ app.use('/student',studentRouter)
+
  app.listen(3000, () =>{
     console.log('Server started...')
  })

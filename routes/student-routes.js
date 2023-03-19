@@ -6,7 +6,11 @@ const router = express.Router()
 const Student = require("../models/student");
 
 //GET API
+<<<<<<< HEAD
 router.get('/',async(req,res) =>{
+=======
+router.get('/',verifyAccessToken,async(req,res) =>{
+>>>>>>> 11c7a6b86cdfe6459429c699aad1ca31311acd0b
     try{
         //console.log(req.headers['authorization'])
         const students =  await Student.find()
@@ -59,8 +63,13 @@ router.post('/',verifyAccessToken, async(req,res) => {
 router.delete('/:id',verifyAccessToken,async(req,res) =>{
     try{
         const students = await Student.findById(req.params.id)
+<<<<<<< HEAD
         //students.name = req.body.name
         //students.age= req.body.age
+=======
+        students.name = req.body.name,
+        students.age= req.body.age
+>>>>>>> 11c7a6b86cdfe6459429c699aad1ca31311acd0b
         const c1 = await students.remove()
         res.json(c1)
     }
