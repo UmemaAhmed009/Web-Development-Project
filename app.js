@@ -21,9 +21,9 @@
  /*const alienRouter=require('./routes/aliens')
  app.use('/aliens',alienRouter)*/
 
+ //Using User routes
  const userRouter=require('./routes/users')
  app.use('/users',userRouter)
- 
  //Using Subject Routes
  const subjectRouter=require('./routes/subject-routes')
  app.use('/subject',subjectRouter)
@@ -42,6 +42,18 @@
  //Using Leaderboard Routes
  const leaderboardRouter=require('./routes/leaderboard-routes')
  app.use('/leaderboard',leaderboardRouter)
+ //Using Student Routes
+ const studentRouter=require('./routes/student-routes')
+ app.use('/student',studentRouter)
+ //Using User Role Routes
+ const userRoleRouter=require('./routes/user_role-routes')
+ app.use('/user_role',userRoleRouter)
+ //Using Progress Routes
+ const progressRouter=require('./routes/progress-routes')
+ app.use('/progress',progressRouter)
+ //Using Role Routes
+ const roleRouter=require('./routes/role')
+ app.use('/role',roleRouter)
 
  app.listen(3000, () =>{
     console.log('Server started...')
