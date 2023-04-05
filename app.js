@@ -3,11 +3,14 @@
  //Import mongoose
  const mongoose = require('mongoose')
  require('dotenv').config()
+ //Import CORS
+ const cors = require("cors");
 
 //const url = 'mongodb://127.0.0.1/AlienDBex'
  const url = 'mongodb://127.0.0.1/User'
 //Initializa the app
  const app = express()
+ app.use(cors());
 
  mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
  const con = mongoose.connection
@@ -55,9 +58,6 @@
  const roleRouter=require('./routes/role')
  app.use('/role',roleRouter)
 
- //Using Student Routes
- const studentRouter=require('./routes/student-routes')
- app.use('/student',studentRouter)
 
  app.listen(3000, () =>{
     console.log('Server started...')
