@@ -9,6 +9,9 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import Register from './pages/RegisterPage';
+import ProtectedRoutes from "./ProtectedRoutes";
+import AuthComponent from './AuthComponent';
 
 // ----------------------------------------------------------------------
 
@@ -28,6 +31,10 @@ export default function Router() {
     {
       path: 'login',
       element: <LoginPage />,
+    },
+    {
+      path: 'signUp',
+      element: <Register />,
     },
     {
       element: <SimpleLayout />,
